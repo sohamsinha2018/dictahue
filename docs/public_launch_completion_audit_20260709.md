@@ -17,6 +17,11 @@
 - V0 bundle does not declare Screen Recording permission.
 - V0 binary does not link ScreenCaptureKit.
 - Static site renders without external analytics or signup.
+- Public GitHub repo exists: `https://github.com/sohamsinha2018/dictahue`.
+- GitHub Discussions is enabled for feedback.
+- GitHub Pages workflow deploys the static site successfully.
+- GitHub Pages URL is live: `https://sohamsinha2018.github.io/dictahue/`.
+- GitHub Pages custom domain is set to `dictahue.app`.
 - Public benchmark claim numbers are machine-checked against scorecard JSON.
 - Latency-sensitive evals now refuse dirty machine state unless explicitly overridden.
 - Current structure-only safety rerun passed: 187 rows, 86 accepted updates, 0 unsafe accepted rows.
@@ -33,6 +38,9 @@ script/audit_macos_release_artifact.sh dist/release/DictaHue.app
 scripts/audit_benchmark_claims.py
 script/audit_release_checksums.sh dist/release/DictaHue-0.1.0.SHA256SUMS
 script/audit_public_launch_readiness.sh --allow-placeholders
+script/smoke_site_visual.sh
+gh repo view sohamsinha2018/dictahue --json hasDiscussionsEnabled,url,homepageUrl
+gh api repos/sohamsinha2018/dictahue/pages
 ```
 
 ## Still Blocked For Public Launch
@@ -41,11 +49,17 @@ script/audit_public_launch_readiness.sh --allow-placeholders
 - Developer ID Application certificate is not available in this environment.
 - Notary profile is not configured.
 - The DMG is not notarized/stapled.
-- Site links still point to placeholders until the public GitHub release/repo/discussion and feedback community exist.
+- GitHub release asset is not published yet because the DMG still needs Developer ID signing and notarization.
+- `dictahue.app` DNS still points to GoDaddy, not GitHub Pages. Update DNS before using the custom domain:
+  - `A @ 185.199.108.153`
+  - `A @ 185.199.109.153`
+  - `A @ 185.199.110.153`
+  - `A @ 185.199.111.153`
+  - optional `CNAME www sohamsinha2018.github.io`
 - Wispr Flow comparison is still directional, not a same-WAV public benchmark.
 
 ## Release Decision
 
 Local smoke build: acceptable.
 
-Public launch: not ready until Developer ID signing, notarization, real public links, checksum-published GitHub release, and a strict clean-machine latency eval are done.
+Public launch: not ready until Developer ID signing, notarization, checksum-published GitHub release, DNS cutover, and a strict clean-machine latency eval are done.

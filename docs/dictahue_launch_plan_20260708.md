@@ -67,22 +67,34 @@ script/validate_public_runtime_local_only.sh "dist/release/DictaHue.app/Contents
 
 Static files live in `site/`.
 
-Before publishing, replace placeholder links:
+Current state:
 
-- GitHub release DMG
-- public GitHub repo
-- GitHub Discussions
-- Discord invite
+- Public repo: `https://github.com/sohamsinha2018/dictahue`
+- GitHub Pages: `https://sohamsinha2018.github.io/dictahue/`
+- GitHub Discussions: `https://github.com/sohamsinha2018/dictahue/discussions`
+- Custom domain configured in GitHub Pages: `dictahue.app`
+- DNS still needs to move from GoDaddy parking/site builder to GitHub Pages.
 
-Use:
+If links need to be regenerated, use:
 
 ```bash
-DICTAHUE_DOWNLOAD_URL="https://github.com/<owner>/<repo>/releases/download/v0.1.0/DictaHue-0.1.0.dmg" \
-DICTAHUE_GITHUB_URL="https://github.com/<owner>/<repo>" \
-DICTAHUE_DISCUSSIONS_URL="https://github.com/<owner>/<repo>/discussions" \
-DICTAHUE_DISCORD_URL="https://discord.gg/<invite>" \
+DICTAHUE_DOWNLOAD_URL="https://github.com/sohamsinha2018/dictahue/releases/latest/download/DictaHue-0.1.0.dmg" \
+DICTAHUE_GITHUB_URL="https://github.com/sohamsinha2018/dictahue" \
+DICTAHUE_DISCUSSIONS_URL="https://github.com/sohamsinha2018/dictahue/discussions" \
 script/configure_site_links.sh
 ```
+
+DNS records for `dictahue.app`:
+
+```text
+A     @     185.199.108.153
+A     @     185.199.109.153
+A     @     185.199.110.153
+A     @     185.199.111.153
+CNAME www   sohamsinha2018.github.io
+```
+
+GitHub's custom-domain docs say DNS changes can take up to 24 hours to propagate.
 
 Recommended launch proof:
 
@@ -95,8 +107,8 @@ Recommended launch proof:
 
 - Developer ID Application certificate is not installed in Keychain yet.
 - Notary profile `dictahue-notary` is not stored yet.
-- Public GitHub repo/release URL and feedback community URL do not exist in this checkout.
-- `script/audit_public_launch_readiness.sh --public` will intentionally fail until those links and signing/notarization are real.
+- Public GitHub release asset does not exist yet because the app is not signed/notarized.
+- `script/audit_public_launch_readiness.sh --public` will intentionally fail until signing/notarization and clean-machine eval are real.
 - Public one-click packaging must embed the Python runtime or ship a signed first-run bootstrap. `RAMBLEFIX_PUBLIC_RELEASE=1` now fails unless this is explicit.
 - The current benchmark supports the Hindi+English/local-tool wedge, but the Wispr Flow comparison remains directional rather than a clean loopback same-WAV benchmark.
 - This Mac currently has stale uninterruptible `whisper-cli` eval processes. Reboot before rerunning or publishing fresh latency benchmarks.

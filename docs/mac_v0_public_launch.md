@@ -61,7 +61,13 @@ Explicitly out of V0:
 
 ## Public Repo Staging
 
-Run this before creating the first public commit:
+Public repo:
+
+```text
+https://github.com/sohamsinha2018/dictahue
+```
+
+Run this before any future public source push:
 
 ```bash
 script/report_public_launch_blockers.sh
@@ -75,16 +81,15 @@ Only after reviewing the dry run:
 ```bash
 script/stage_public_source.sh --apply
 git commit -m "Launch DictaHue Mac V0"
-git remote add origin git@github.com:<owner>/<repo>.git
-git push -u origin main
+git push
 ```
 
 Then configure the site links:
 
 ```bash
-DICTAHUE_DOWNLOAD_URL="https://github.com/<owner>/<repo>/releases/download/v0.1.0/DictaHue-0.1.0.dmg" \
-DICTAHUE_GITHUB_URL="https://github.com/<owner>/<repo>" \
-DICTAHUE_DISCUSSIONS_URL="https://github.com/<owner>/<repo>/discussions" \
+DICTAHUE_DOWNLOAD_URL="https://github.com/sohamsinha2018/dictahue/releases/latest/download/DictaHue-0.1.0.dmg" \
+DICTAHUE_GITHUB_URL="https://github.com/sohamsinha2018/dictahue" \
+DICTAHUE_DISCUSSIONS_URL="https://github.com/sohamsinha2018/dictahue/discussions" \
 script/configure_site_links.sh
 ```
 
