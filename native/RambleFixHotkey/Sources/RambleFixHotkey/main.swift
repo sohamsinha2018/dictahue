@@ -4099,9 +4099,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             hudBackgroundView?.frame = NSRect(x: 0, y: 0, width: width, height: height)
             hudBackgroundView?.layer?.cornerRadius = height / 2
             hudNativeGlassView?.frame = NSRect(x: 0, y: 0, width: width, height: height)
-            if #available(macOS 26.0, *), let nativeGlassView = hudNativeGlassView as? NSGlassEffectView {
-                nativeGlassView.cornerRadius = height / 2
-            }
             hudGlassOverlayView?.frame = NSRect(x: 0, y: 0, width: width, height: height)
             hudRefractedGlassView?.frame = NSRect(x: 0, y: 0, width: width, height: height)
             hudBackdropCaptureKey = nil
