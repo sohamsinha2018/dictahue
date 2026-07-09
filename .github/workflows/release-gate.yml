@@ -16,7 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install Python smoke dependencies
-        run: python3 -m pip install requests==2.33.1
+        run: |
+          python3 -m venv .ci-venv
+          .ci-venv/bin/python -m pip install --upgrade pip
+          .ci-venv/bin/python -m pip install requests==2.33.1
       - name: Audit public source surface
         run: script/audit_public_source_surface.sh
       - name: Audit benchmark claims
@@ -24,8 +27,10 @@ jobs:
       - name: Validate V0 public scope
         run: script/validate_v0_release_scope.sh
       - name: Native hotkey regression
+        env:
+          RAMBLEFIX_PYTHON: .ci-venv/bin/python
         run: script/regression_ramblefix_hotkey.sh
       - name: Build native hotkey package
         run: swift build --package-path native/RambleFixHotkey
       - name: Compile Python sources
-        run: python3 -m compileall -q src app.py scripts
+        run: .ci-venv/bin/python -m compileall -q src app.py scripts
