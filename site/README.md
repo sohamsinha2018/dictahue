@@ -1,6 +1,14 @@
 # DictaHue Site
 
-Static launch site for `dictahue.app`.
+Static launch site for DictaHue.
+
+Live pre-DNS URL:
+
+```text
+https://sohamsinha2018.github.io/dictahue/
+```
+
+Move `dictahue.app` to GitHub Pages only after DNS points away from GoDaddy.
 
 Before publishing, configure the links in `index.html`:
 
