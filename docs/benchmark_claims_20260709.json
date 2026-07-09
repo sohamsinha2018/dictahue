@@ -18,8 +18,8 @@
     {
       "id": "expanded_real_use_overall",
       "label": "Expanded real-use check",
-      "source_file": "eval_runs/final-launch-eval-20260709-195158/resident_server_expanded/scorecard.json",
-      "source_section": "summary",
+      "source_file": "docs/public_benchmark_evidence_20260709.json",
+      "source_section": "resident_expanded_summary",
       "selector": {
         "backend": "resident_server_first_paste"
       },
@@ -44,8 +44,8 @@
     {
       "id": "expanded_real_use_hindi_english",
       "label": "Hindi+English under 60s",
-      "source_file": "eval_runs/final-launch-eval-20260709-195158/resident_server_expanded/summary_by_category.json",
-      "source_section": "by_category",
+      "source_file": "docs/public_benchmark_evidence_20260709.json",
+      "source_section": "resident_expanded_by_category",
       "selector": {
         "backend": "resident_server_first_paste",
         "category": "real_use_hindi_hinglish_probe"
@@ -76,8 +76,8 @@
     {
       "id": "structure_safety_latest_gate",
       "label": "Structure safety",
-      "source_file": "eval_runs/final-launch-eval-20260709-195158/quality_gate/quality_gate_summary.json",
-      "source_section": "$",
+      "source_file": "docs/public_benchmark_evidence_20260709.json",
+      "source_section": "quality_gate_summary",
       "selector": {},
       "metrics": {
         "unsafe_accepted": {
@@ -100,8 +100,8 @@
     {
       "id": "short_clean_english",
       "label": "English, public clips under 60s",
-      "source_file": "eval_runs/current-product-structure-20260709/public95_summary.json",
-      "source_section": "by_pool_bucket",
+      "source_file": "docs/public_benchmark_evidence_20260709.json",
+      "source_section": "public95_by_pool_bucket",
       "selector": {
         "backend": "ramblefix_current_structured_if_unchanged",
         "pool_bucket": "english_public"
@@ -128,8 +128,8 @@
     {
       "id": "short_hindi_english",
       "label": "Hindi+English, public clips under 60s",
-      "source_file": "eval_runs/current-product-structure-20260709/public95_summary.json",
-      "source_section": "by_pool_bucket",
+      "source_file": "docs/public_benchmark_evidence_20260709.json",
+      "source_section": "public95_by_pool_bucket",
       "selector": {
         "backend": "ramblefix_current_structured_if_unchanged",
         "pool_bucket": "hinglish_code_switch"
@@ -161,8 +161,8 @@
     {
       "id": "long_hindi_english",
       "label": "Hindi+English, 60-120s stress clips",
-      "source_file": "eval_runs/current-product-structure-20260709/public_long_summary.json",
-      "source_section": "by_category",
+      "source_file": "docs/public_benchmark_evidence_20260709.json",
+      "source_section": "public_long_by_category",
       "selector": {
         "backend": "ramblefix_current_structured_if_unchanged",
         "category": "openslr104_hinglish"
@@ -194,13 +194,7 @@
   ],
   "evidence_files": [
     "docs/current_regression_readout_20260709.md",
-    "eval_runs/final-launch-eval-20260709-195158/resident_server_expanded/scorecard.json",
-    "eval_runs/final-launch-eval-20260709-195158/resident_server_expanded/summary_by_category.json",
-    "eval_runs/final-launch-eval-20260709-195158/quality_gate/quality_gate_summary.json",
-    "eval_runs/current-product-structure-20260709/public95_summary.json",
-    "eval_runs/current-product-structure-20260709/public_long_summary.json",
-    "eval_runs/current-product-structure-20260709/actual_existing6_variant_score/variant_scorecard.json",
-    "eval_runs/regression-quality-20260709-023240-focus-fix/quality_gate_summary.json"
+    "docs/public_benchmark_evidence_20260709.json"
   ],
   "site_must_contain": [
     "Same-WAV local benchmark",
