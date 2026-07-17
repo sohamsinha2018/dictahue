@@ -134,6 +134,9 @@ pattern_allowlist = {
     Path("script/audit_release_security.sh"),
     Path("script/audit_public_launch_readiness.sh"),
 }
+binary_allowlist = {
+    Path("site/og.png"),
+}
 
 for rel in files:
     full = root / rel
@@ -142,6 +145,8 @@ for rel in files:
     try:
         data = full.read_text(encoding="utf-8")
     except UnicodeDecodeError:
+        if rel in binary_allowlist:
+            continue
         fail(f"non-text file is publishable without explicit ignore: {rel}")
     if secret_re.search(data) and rel not in pattern_allowlist:
         fail(f"secret/API-key marker found in publishable source: {rel}")
