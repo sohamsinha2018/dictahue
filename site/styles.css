@@ -336,8 +336,55 @@ h3 {
   width: 88px;
   height: 88px;
   display: block;
+}
+
+.mic-btn {
+  min-height: 30px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.10);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 12.5px;
+  font-weight: 720;
+  font-family: inherit;
   cursor: pointer;
   touch-action: none;
+}
+
+.mic-btn:active {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.act-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.act-chips button {
+  min-height: 28px;
+  padding: 0 11px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.act-chips button:hover {
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.30);
+}
+
+.act-chips button.active {
+  border-color: rgba(183, 255, 84, 0.5);
+  background: rgba(183, 255, 84, 0.10);
+  color: #f5ffe8;
 }
 
 .orb-lang {
@@ -717,12 +764,9 @@ h3 {
     box-shadow: 0 24px 54px rgba(20, 28, 40, 0.12);
   }
 
-  #orb {
-    transition: transform 0.22s ease;
-  }
-
-  #orb:hover {
-    transform: scale(1.05);
+  .mic-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.34);
   }
 }
 
@@ -819,11 +863,6 @@ h3 {
     scroll-behavior: auto;
   }
 
-  #orb {
-    cursor: default;
-    transition: none;
-  }
-
   .steps article,
   .security-grid article,
   .metric-grid article,
@@ -834,8 +873,7 @@ h3 {
 
   .steps article:hover,
   .security-grid article:hover,
-  .metric-grid article:hover,
-  #orb:hover {
+  .metric-grid article:hover {
     transform: none;
   }
 
