@@ -105,13 +105,30 @@ a {
   min-height: auto;
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1.08fr);
-  align-items: center;
-  gap: clamp(34px, 6vw, 78px);
+  grid-template-areas:
+    "copy visual"
+    "cta  visual";
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  column-gap: clamp(34px, 6vw, 78px);
+  row-gap: 22px;
   padding: clamp(56px, 8vh, 86px) clamp(18px, 5vw, 64px) clamp(48px, 7vh, 74px);
 }
 
 .hero-copy {
+  grid-area: copy;
   max-width: 680px;
+}
+
+.hero-cta {
+  grid-area: cta;
+  max-width: 680px;
+  align-self: start;
+}
+
+.hero-visual {
+  grid-area: visual;
+  align-self: center;
 }
 
 .eyebrow {
@@ -464,7 +481,7 @@ h3 {
 
 .signal-strip {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   margin: 0 clamp(18px, 5vw, 64px);
   overflow: hidden;
@@ -808,13 +825,26 @@ h3 {
 
   .hero {
     min-height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-template-areas:
+      "copy"
+      "visual"
+      "cta";
+    row-gap: 26px;
+  }
+
+  .hero-copy,
+  .hero-cta {
+    max-width: 100%;
   }
 
   .hero-visual {
     min-height: 460px;
   }
 
-  .metric-grid {
+  .metric-grid,
+  .signal-strip {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -856,7 +886,8 @@ h3 {
   }
 
   .metric-grid,
-  .security-grid {
+  .security-grid,
+  .signal-strip {
     grid-template-columns: 1fr;
   }
 
