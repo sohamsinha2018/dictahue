@@ -1,0 +1,7 @@
+Fonts in this directory are licensed under the SIL Open Font License 1.1.
+Full license text and copyright/reserved-font-name statements:
+  - Inter:          Inter-OFL.txt          (https://github.com/rsms/inter)
+  - JetBrains Mono: JetBrainsMono-OFL.txt  (https://github.com/JetBrains/JetBrainsMono)
+Vendored as latin-subset woff2 for self-hosting (no third-party font requests).
+The CSS family aliases "Inter var" / "JetBrains Mono var" are stylesheet identifiers,
+not the fonts' internal names, so no Reserved Font Name is used.

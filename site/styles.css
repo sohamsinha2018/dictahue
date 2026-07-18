@@ -1,5 +1,23 @@
+@font-face {
+  font-family: "Inter var";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./vendor/fonts/inter-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono var";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("./vendor/fonts/jetbrainsmono-latin.woff2") format("woff2");
+}
+
 :root {
   color-scheme: light;
+  --sans: "Inter var", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono var", ui-monospace, "SF Mono", "SFMono-Regular", Menlo, monospace;
   --ink: #111318;
   --muted: #626a76;
   --paper: #f6f7f2;
@@ -29,8 +47,12 @@ body {
     linear-gradient(115deg, rgba(36, 215, 242, 0.10) 0 18%, transparent 18% 100%),
     linear-gradient(245deg, rgba(183, 255, 84, 0.14) 0 16%, transparent 16% 100%),
     linear-gradient(180deg, #ffffff 0%, var(--paper) 58%, #eef1f4 100%);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--sans);
+  font-optical-sizing: auto;
   letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -152,7 +174,8 @@ h1 {
   max-width: 820px;
   font-size: clamp(44px, 6.7vw, 92px);
   line-height: 0.92;
-  letter-spacing: 0;
+  letter-spacing: -0.028em;
+  font-weight: 800;
 }
 
 h2 {
@@ -160,7 +183,8 @@ h2 {
   max-width: 760px;
   font-size: clamp(30px, 4.3vw, 58px);
   line-height: 1.02;
-  letter-spacing: 0;
+  letter-spacing: -0.022em;
+  font-weight: 800;
 }
 
 h3 {
@@ -250,8 +274,9 @@ h3 {
   border-radius: 8px;
   overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(17, 21, 28, 0.98), rgba(30, 38, 48, 0.94)),
-    var(--navy);
+    radial-gradient(115% 85% at 12% 6%, rgba(36, 215, 242, 0.15), transparent 55%),
+    radial-gradient(85% 75% at 94% 102%, rgba(183, 255, 84, 0.09), transparent 60%),
+    linear-gradient(160deg, #0d121b 0%, #090c12 100%);
   box-shadow: var(--shadow);
 }
 
@@ -259,10 +284,8 @@ h3 {
   content: "";
   position: absolute;
   inset: -1px;
-  background:
-    repeating-linear-gradient(100deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 36px),
-    linear-gradient(90deg, rgba(36, 215, 242, 0.20), transparent 34%, rgba(183, 255, 84, 0.16) 66%, transparent);
-  opacity: 0.9;
+  background: repeating-linear-gradient(100deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 42px);
+  opacity: 0.7;
 }
 
 .demo-shell {
@@ -275,7 +298,7 @@ h3 {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.24),
     0 30px 80px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(22px) saturate(1.25);
+  backdrop-filter: blur(22px) saturate(1.1);
 }
 
 .demo-bar {
@@ -299,8 +322,10 @@ h3 {
 
 .demo-bar p {
   margin: 0 0 0 10px;
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 13px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .compose {
@@ -309,11 +334,16 @@ h3 {
 
 .compose-label {
   margin-bottom: 8px;
-  color: rgba(255, 255, 255, 0.50);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-family: var(--mono);
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.compose-label.result {
+  color: rgba(183, 255, 84, 0.62);
 }
 
 .spoken,
@@ -388,9 +418,10 @@ h3 {
   border-radius: 999px;
   background: transparent;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 12px;
-  font-weight: 700;
-  font-family: inherit;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   cursor: pointer;
 }
 
@@ -408,10 +439,11 @@ h3 {
 .orb-lang {
   min-height: 15px;
   margin: 0;
-  color: rgba(255, 255, 255, 0.62);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-family: var(--mono);
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -439,6 +471,27 @@ h3 {
 .spoken.cleaned .filler {
   opacity: 0.3;
   text-decoration: line-through;
+}
+
+.spoken .caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 1px;
+  vertical-align: -0.16em;
+  border-radius: 1px;
+  background: var(--cyan);
+  box-shadow: 0 0 6px rgba(36, 215, 242, 0.6);
+  animation: caretBlink 1.05s steps(1) infinite;
+}
+
+.spoken.cleaned .caret {
+  display: none;
+}
+
+@keyframes caretBlink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
 }
 
 .pasted.flash {
@@ -923,6 +976,11 @@ h3 {
   .bar-fill,
   .spoken .filler {
     transition: none;
+  }
+
+  .spoken .caret {
+    animation: none;
+    display: none;
   }
 
   .steps article:hover,

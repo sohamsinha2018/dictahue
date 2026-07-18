@@ -8,7 +8,7 @@
       name="description"
       content="How RambleFix measures local dictation quality and speed on saved same-WAV recordings."
     />
-    <link rel="stylesheet" href="./styles.css?v=20260718c" />
+    <link rel="stylesheet" href="./styles.css?v=20260718d" />
   </head>
   <body>
     <header class="site-nav">
@@ -30,11 +30,11 @@
         <p class="eyebrow">Benchmark method</p>
         <h1>Same audio, local engines, honest caveats.</h1>
         <p class="lede">
-          RambleFix benchmarks replay saved WAV recordings through local engines - every engine hears the exact same
-          audio - and compare outputs against Gemini-cross-checked gold transcripts. Cloud models are used only to
-          confirm gold labels, not in the product path. "Meaning" is the share of what was said that survives into the
+          RambleFix benchmarks replay saved WAV recordings through local engines — every engine hears the exact same
+          audio — and compare outputs against Gemini-cross-checked gold transcripts. Cloud models are used only to
+          confirm gold labels, not in the product path. “Meaning” is the share of what was said that survives into the
           pasted text; we use it instead of word error rate because RambleFix strips fillers on purpose, and word error
-          rate would count that as a mistake. Engines tested alongside RambleFix's router include Whisper large-v3-turbo
+          rate would count that as a mistake. Engines tested alongside RambleFix’s router include Whisper large-v3-turbo
           (Apple MLX build), Qwen3 ASR (MLX), and Nvidia Parakeet. Full per-engine tables are in
           <a href="https://github.com/sohamsinha2018/ramblefix/blob/main/docs/bakeoff_primary_engine_20260712.md">docs/bakeoff_primary_engine_20260712.md</a>.
         </p>

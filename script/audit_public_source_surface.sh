@@ -136,6 +136,8 @@ pattern_allowlist = {
 }
 binary_allowlist = {
     Path("site/og.png"),
+    Path("site/vendor/fonts/inter-latin.woff2"),
+    Path("site/vendor/fonts/jetbrainsmono-latin.woff2"),
 }
 
 for rel in files:
