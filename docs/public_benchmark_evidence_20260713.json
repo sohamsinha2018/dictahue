@@ -44,5 +44,13 @@
   }
  ],
  "scoreable_rows_total": 58,
- "silence_guard": "R-048 standalone signoff hallucinations gated by scripts in regression chain"
+ "silence_guard": "R-048 standalone signoff hallucinations gated by scripts in regression chain",
+ "router_english_same18": [
+  {
+   "n": 18,
+   "meaning": 0.873,
+   "terms": 0.883,
+   "source": "docs/bakeoff_primary_engine_20260712.md 'Router prototype result (31 clips)' table, pre-paste router row (n=18, wave-1 gold). Note: parakeet_english 0.806 comes from the later final-gold popular-engine sweep close-out; a final-gold rescore of this router slice is the follow-up before this number is cited beyond the site."
+  }
+ ]
 }

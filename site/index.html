@@ -13,7 +13,7 @@
     <meta property="og:image" content="https://sohamsinha2018.github.io/dictahue/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23101214'/%3E%3Cpath d='M12 34c5-18 10 18 15 0s10 18 15 0 10 18 15 0' fill='none' stroke='%2325dff4' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M12 28c5-13 10 13 15 0s10 13 15 0 10 13 15 0' fill='none' stroke='%23b6ff58' stroke-width='4' stroke-linecap='round' opacity='.88'/%3E%3C/svg%3E" />
-    <link rel="stylesheet" href="./styles.css?v=20260717c" />
+    <link rel="stylesheet" href="./styles.css?v=20260718a" />
   </head>
   <body>
     <header class="site-nav">
@@ -33,10 +33,10 @@
     <main id="top">
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Free and open-source local dictation for Mac</p>
-          <h1>Fast private dictation, free on your Mac.</h1>
+          <p class="eyebrow">Free, open-source dictation for Mac</p>
+          <h1>Fast, private dictation on your Mac.</h1>
           <p class="lede">
-            Hold a key, speak, release - clean text lands in whatever app you are using. Built for work machines where cloud dictation is hard to approve: your voice stays on your Mac, with only standard dictation permissions.
+            Most people speak roughly three times faster than they type - DictaHue turns that into clean text in any app. Hold a key, speak, release. Built for work machines where cloud dictation is hard to approve: your voice stays on your Mac, with only standard dictation permissions.
           </p>
           <div class="actions">
             <a class="button primary" href="https://github.com/sohamsinha2018/dictahue">View the source</a>
@@ -46,6 +46,7 @@
           <p class="install-note">No public build yet: download opens once the app is signed and notarized by Apple, with a published checksum - no unsigned binaries. Watch the repo (Watch &rarr; Custom &rarr; Releases) to get pinged.</p>
           <div class="trust-row" aria-label="Launch promises">
             <span>Audio stays local</span>
+            <span>No account</span>
             <span>No screen recording</span>
             <span>MIT licensed source</span>
             <span>Hindi+English beta</span>
@@ -64,22 +65,24 @@
             <div class="compose">
               <p class="compose-label">You say</p>
               <p id="demo-spoken" class="spoken">
-                check the PRD, run release tests, and make sure MCP and Qwen do not regress
+                okay so the launch note — no wait — the checklist first, um, then the security review, and keep the whole thing short
               </p>
               <div class="orb-stage" id="orb-stage">
                 <canvas id="orb" width="300" height="300" aria-hidden="true"></canvas>
                 <p id="orb-lang" class="orb-lang">listening &middot; english</p>
-                <button type="button" id="mic-btn" class="mic-btn" style="display: none">Hold to try with your mic</button>
-                <p class="orb-hint" id="orb-hint">The orb rides your voice. Audio never leaves this page &mdash; the real engine runs only in the Mac app.</p>
               </div>
               <p class="compose-label result">DictaHue pastes</p>
               <p id="demo-pasted" class="pasted">
-                Check the PRD, run the release tests, and make sure MCP and Qwen do not regress.
+                The launch note: the checklist first, then the security review, and keep the whole thing short.
               </p>
               <div class="act-chips" id="act-chips" role="group" aria-label="Demo scenes">
-                <button type="button" class="active">Fast English</button>
-                <button type="button">Hindi + English</button>
-                <button type="button">Messy ramble</button>
+                <button type="button" class="active">Strips the umms</button>
+                <button type="button">Hears the switch</button>
+                <button type="button">Fast English</button>
+              </div>
+              <div class="mic-try">
+                <p class="orb-hint" id="orb-hint">Visual only &mdash; nothing is transcribed, and audio never leaves this page. The real engine ships in the Mac app.</p>
+                <button type="button" id="mic-btn" class="mic-btn" style="display: none">Hold &mdash; the orb reacts to your voice</button>
               </div>
             </div>
           </div>
@@ -110,9 +113,9 @@
         </div>
         <div class="copy-stack">
           <p>
-            Most people speak 130+ words a minute and type around 40. Most of what builders dictate now is long,
-            rambly instructions for AI tools - easy to say, tedious to type. The catch has always been the output:
-            raw transcripts full of fillers, mangled product names, and your second language flattened away.
+            Most of what builders dictate now is long, rambly instructions for AI tools - easy to say, tedious to
+            type. The catch has always been the output: raw transcripts full of fillers, mangled product names, and
+            your second language flattened away.
           </p>
           <p>
             DictaHue keeps the pasted text usable: work terms survive, fillers get cleaned up, and Hindi+English came
@@ -167,11 +170,11 @@
 
       <section class="section evidence" id="benchmarks">
         <div class="section-head">
-          <p class="eyebrow">Backed by real recordings</p>
+          <p class="eyebrow">Tested on real recordings</p>
           <h2>Keeps the meaning, keeps the terms, stays fast.</h2>
           <p>
             We replay real saved recordings through the local engine and compare the output with
-            Gemini-cross-checked gold transcripts. "Meaning kept" is the share of what you said that
+            Gemini-cross-checked gold (reference) transcripts. "Meaning kept" is the share of what you said that
             survives into the pasted text - we use it instead of word error rate because DictaHue strips
             fillers on purpose, and word error rate would count that as a mistake. The takeaway: English is
             daily-use ready, and Hindi+English preserves more meaning than the tested local alternatives.
@@ -187,33 +190,39 @@
               <div class="bar-track"><div class="bar-fill" style="width: 89%"></div></div>
             </div>
             <div class="bar-row">
-              <div class="bar-label"><span>Tested local general engines</span><span>66-70%</span></div>
+              <div class="bar-label"><span>Other local models, same clips</span><span>66-70%</span></div>
               <div class="bar-track"><div class="bar-fill rival" style="width: 70%"></div></div>
             </div>
             <p>Same 13 mixed-language clips: DictaHue retained ~89% meaning vs ~66-70% for tested local general engines.</p>
           </article>
           <article class="wide">
-            <span>English &middot; 45 real saved dictations</span>
-            <strong>~90% meaning retained</strong>
+            <span>English &middot; all 45 real saved dictations</span>
+            <strong>~90% meaning kept</strong>
+            <p class="bar-subhead">Head-to-head, only the 18 clips both engines heard:</p>
             <div class="bar-row">
-              <div class="bar-label"><span>DictaHue, same 18 clips</span><span>~87%</span></div>
+              <div class="bar-label"><span>DictaHue</span><span>~87%</span></div>
               <div class="bar-track"><div class="bar-fill" style="width: 87%"></div></div>
             </div>
             <div class="bar-row">
-              <div class="bar-label"><span>Parakeet, same 18 clips</span><span>~81%</span></div>
+              <div class="bar-label"><span>Parakeet</span><span>~81%</span></div>
               <div class="bar-track"><div class="bar-fill rival" style="width: 81%"></div></div>
             </div>
-            <p>The ~90% headline is DictaHue across all 45 dictations, where work terms were also kept at about 90%. The head-to-head bars use the 18 clips both engines were run on: DictaHue ~87% vs ~81% for Parakeet (Nvidia's open speech model, the usual local pick).</p>
+            <p>The ~90% headline is DictaHue across all 45 dictations, where work terms were also kept at about 90%. Parakeet is Nvidia's open speech model, the usual local pick.</p>
           </article>
           <article>
             <span>Long rambles</span>
-            <strong>~93% meaning retained</strong>
+            <strong>~93% meaning kept</strong>
             <p>Our strongest numbers come on long, messy instructions - the kind people speak into AI tools and docs.</p>
           </article>
           <article>
             <span>Live speed</span>
             <strong>text lands a beat after you release</strong>
             <p>In recent test runs on the installed app, normal dictation pastes a beat after you release the key; multilingual can take a few seconds and is labeled beta.</p>
+          </article>
+          <article>
+            <span>Cleanup safety</span>
+            <strong>152 edits accepted, 0 changed meaning</strong>
+            <p>The cleanup step (fillers out, punctuation and casing in) never rewrites what you said - every accepted edit is checked against that.</p>
           </article>
         </div>
 
@@ -284,11 +293,11 @@
         // Fillers and false starts are wrapped in «…» — typed dim, struck through on paste.
         var examples = [
           {
-            app: "typing into Slack",
-            spoken: "check the PRD, run release tests, and make sure MCP and Qwen do not regress",
-            pasted: "Check the PRD, run the release tests, and make sure MCP and Qwen do not regress.",
+            app: "typing into Docs",
+            spoken: "«okay so» the launch note — «no wait —» the checklist first, «um,» then the security review, and keep the whole thing short",
+            pasted: "The launch note: the checklist first, then the security review, and keep the whole thing short.",
             dual: false,
-            listen: 2400
+            listen: 3400
           },
           {
             app: "typing into your editor",
@@ -298,11 +307,11 @@
             listen: 2400
           },
           {
-            app: "typing into Docs",
-            spoken: "«okay so» the launch note — «no wait —» the checklist first, «um,» then the security review, and keep the whole thing short",
-            pasted: "The launch note: the checklist first, then the security review, and keep the whole thing short.",
+            app: "typing into Slack",
+            spoken: "check the PRD, run release tests, and make sure MCP and Qwen do not regress",
+            pasted: "Check the PRD, run the release tests, and make sure MCP and Qwen do not regress.",
             dual: false,
-            listen: 3400
+            listen: 2400
           }
         ];
         var spoken = document.getElementById("demo-spoken");
@@ -481,7 +490,7 @@
         }
 
         // --- scripted loop: listen (type) -> process -> paste ---
-        var PROC = 600, SETTLE = 1200;
+        var PROC = 600, SETTLE = 2000;
         var exIdx = 0, phase = "listen", phaseStart = performance.now(), wordsShown = -1;
         var micHold = false, micStream = null, audioCtx = null, analyser = null, micData = null;
 
